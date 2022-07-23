@@ -1,7 +1,7 @@
 Coverage: 34%
-# Project Title
+# IMS Project
 
-One Paragraph of project description goes here
+A basic Inventory Management System implimenting JDBC.
 
 ## Getting Started
 
@@ -9,11 +9,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
+In order to use this project on your local machine, an up-to-date version of Java must be installed, along with Maven for building the project.
 
 ### Installing
 
@@ -67,14 +63,16 @@ Add additional notes about how to deploy this on a live system
 ## Built With
 
 * [Maven](https://maven.apache.org/) - Dependency Management
+* Eclipse - IDE
+* JUnit - Testing suite
+* MySQL - Database Services
 
 ## Versioning
-
-We use [SemVer](http://semver.org/) for versioning.
+Versioning all done through the use of Git.
 
 ## Authors
 
-* **Chris Perrins** - *Initial work* - [christophperrins](https://github.com/christophperrins)
+* **Jordan Harrison* - *Initial work* - [JHarry444](https://github.com/JHarry444)
 
 ## License
 
@@ -85,5 +83,6 @@ This project is licensed under the MIT license - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Edward Reynolds for top tier teaching and assistance
+* Jordan Harrison for explaining complex concepts to a level a 5 year old could understand.
+
