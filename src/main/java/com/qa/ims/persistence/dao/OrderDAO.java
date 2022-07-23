@@ -18,6 +18,14 @@ public class OrderDAO implements Dao<Order> {
 	public static final Logger LOGGER = LogManager.getLogger();
 
 	@Override
+	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
+		Long order_id = resultSet.getLong("order_id");
+		Long item_id = resultSet.getLong("item_id");
+		return new Order(order_id, item_id);
+
+	}
+
+	@Override
 	public List<Order> readAll() {
 		try (Connection connection = DBUtils.getInstance().getConnection();
 				Statement statement = connection.createStatement();
@@ -109,12 +117,36 @@ public class OrderDAO implements Dao<Order> {
 		return 0;
 	}
 
-	@Override
-	public Order modelFromResultSet(ResultSet resultSet) throws SQLException {
-		Long order_id = resultSet.getLong("order_id");
-		Long customer_id = resultSet.getLong("customer_id");
-		Long item_id = resultSet.getLong("item_id");
-		return new Order(order_id, customer_id, item_id);
+	public Order viewOrder(long id) {
+		try (Connection connection = DBUtils.getInstance().getConnection();
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement.executeQuery("Select * FROM order_items WHERE order_id = ?");) {
+			((PreparedStatement) resultSet).setLong(1, id);
+			resultSet.next();
+			return modelFromResultSet(resultSet);
+		} catch (Exception e) {
+			LOGGER.debug(e);
+			LOGGER.error(e.getMessage());
+		}
+		return null;
+	}
+
+	// to be moved to order_itemDAO later
+	public double totalPrice(long id) throws SQLException {
+		double total = 0;
+		try (Connection connection = DBUtils.getInstance().getConnection();
+
+				Statement statement = connection.createStatement();
+				ResultSet resultSet = statement
+						.executeQuery("SELECT unit_price FROM order_items WHERE customer_id = " + "id");) {
+			List<Order> price = new ArrayList<>();
+
+			for (double i = 0; i < price.size(); i++) {
+
+				total += i;
+			}
+			return total;
+		}
 
 	}
 }
