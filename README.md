@@ -1,4 +1,5 @@
 Coverage: 63.4%
+Link to presentation within Documentation Folder
 # IMS Project
 
 A basic Inventory Management System implimenting JDBC.
